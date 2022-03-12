@@ -28,4 +28,51 @@ public class WaterReadingDetails {
     @Column(name = "BILLEDMONTH")
     private Date billedMonth;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getWaterConsumptionLitres() {
+        return waterConsumptionLitres;
+    }
+
+    public void setWaterConsumptionLitres(Long waterConsumptionLitres) {
+        this.waterConsumptionLitres = waterConsumptionLitres;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+
+    public Date getCreationTime() {
+        return creationTime;
+    }
+
+    public void setCreationTime(Date creationTime) {
+        this.creationTime = creationTime;
+    }
+
+    public Date getUpdatedTime() {
+        return updatedTime;
+    }
+
+    public void setUpdatedTime(Date updatedTime) {
+        this.updatedTime = updatedTime;
+    }
+
+    public Date getBilledMonth() {
+        return billedMonth;
+    }
+
+    public void setBilledMonth(Date billedMonth) {
+        this.billedMonth = billedMonth;
+    }
 }
