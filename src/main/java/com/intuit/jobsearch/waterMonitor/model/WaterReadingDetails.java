@@ -3,7 +3,11 @@ package com.intuit.jobsearch.waterMonitor.model;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.usertype.UserType;
+import org.hibernate.validator.constraints.Range;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Data
@@ -15,9 +19,13 @@ public class WaterReadingDetails {
     @GenericGenerator(name = "native", strategy = "native")
     @Column(name = "USERID")
     private Long id;
+
+    //@Size(message = "waterConsumptionLitres is mandatory")
+    @Range(min=0, max=90)
     @Column(name = "WATERCONSUMPTIONLITRES")
     private Long waterConsumptionLitres;
-    //@JsonIgnore
+    //@Size(message = "amount is mandatory")
+    @Range(min=0, max=90)
     @Column(name = "AMOUNT")
     private String amount;
     @Temporal(value = TemporalType.TIMESTAMP)

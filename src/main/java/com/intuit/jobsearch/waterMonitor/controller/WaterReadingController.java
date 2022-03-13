@@ -7,12 +7,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -30,7 +32,7 @@ public class WaterReadingController {
     }
 
     @RequestMapping(value="addWaterReadingCheck", method= RequestMethod.POST, produces = "application/json", consumes = "application/json")
-    public ResponseEntity<Object> addWaterReading(@RequestBody WaterReadingDetails waterReadingDetails)  throws Exception
+    public ResponseEntity<Object> addWaterReading(@Valid @RequestBody WaterReadingDetails waterReadingDetails)  throws Exception
     {
         if(waterReadingDetails!=null)
         {
@@ -43,9 +45,20 @@ public class WaterReadingController {
             logger.error("waterReadingDetails is null");
         }
         waterReadingService.generateWaterConsumptionDetails(waterReadingDetails);
-
-
         return new ResponseEntity<>(waterReadingDetails, HttpStatus.OK);
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Map<String, String> handleValidationExceptions(
+            MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getAllErrors().forEach((error) -> {
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
+        });
+        return errors;
     }
 
 }
