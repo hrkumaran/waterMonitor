@@ -38,7 +38,7 @@ public class WaterReadingController {
         {
             logger.info("waterReadingDetails Amount="+waterReadingDetails.getAmount());
             logger.info("waterReadingDetails BilledDate="+waterReadingDetails.getBilledMonth());
-            logger.info("waterReadingDetails ReadingLitres="+waterReadingDetails.getWaterConsumptionLitres());
+            logger.info("waterReadingDetails ReadingLitres="+waterReadingDetails.getWaterConsumptionLitre());
         }
         else
         {

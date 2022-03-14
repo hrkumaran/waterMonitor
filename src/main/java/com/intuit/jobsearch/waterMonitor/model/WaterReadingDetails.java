@@ -15,24 +15,23 @@ import java.util.Date;
 public class WaterReadingDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-    @GenericGenerator(name = "native", strategy = "native")
-    @Column(name = "USERID")
-    private Long id;
+    @Column(name = "RRNO")
+    private Long rrNo;
 
-    //@Size(message = "waterConsumptionLitres is mandatory")
-    @Range(min=0, max=90)
-    @Column(name = "WATERCONSUMPTIONLITRES")
-    private Long waterConsumptionLitres;
+    @Column(name = "CURRENT_METER_READING")
+    private Long currentMeterReading;
+    @Column(name = "PREVIOUS_METER_READING")
+    private Long previousMeterReading;
+    @Column(name = "WATER_CONSUMPTION_LITRE")
+    private Long waterConsumptionLitre;
     //@Size(message = "amount is mandatory")
-    @Range(min=0, max=90)
     @Column(name = "AMOUNT")
-    private String amount;
+    private float amount;
     @Temporal(value = TemporalType.TIMESTAMP)
     @Column(name = "CREATED_TIME")
     private Date creationTime;
     @Temporal(value = TemporalType.TIMESTAMP)
-    @Column(name = "UPDATED_TIME")
+    @Column(name = "MODIFIED_TIME")
     private Date updatedTime;
     @Temporal(value = TemporalType.DATE)
     @Column(name = "BILLEDMONTH")

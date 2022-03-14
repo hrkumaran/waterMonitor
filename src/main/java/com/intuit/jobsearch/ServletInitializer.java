@@ -1,5 +1,6 @@
-package com.intuit.jobsearch.waterMonitor;
+package com.intuit.jobsearch;
 
+import com.intuit.jobsearch.WaterMonitorApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 

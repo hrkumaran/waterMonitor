@@ -2,6 +2,7 @@ package com.intuit.jobsearch.common.model;
 
 import com.intuit.jobsearch.common.util.UserType;
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
@@ -11,6 +12,10 @@ import java.util.Date;
 public class UserInfo {
 
         @Id
+        @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+        @GenericGenerator(name = "native", strategy = "native")
+        @Column(name = "USERID")
+        private Long userId;
         @Column(name = "RRNO")
         private Long rrNo;
         @Column(name = "FIRSTNAME")
@@ -19,7 +24,6 @@ public class UserInfo {
         private String lastName;
         @Column(name = "ADDRESS")
         private String address;
-        @Range(min=0, max=3)
         @Column(name = "USERTYPE")
         private UserType userType;
         @Temporal(value = TemporalType.TIMESTAMP)

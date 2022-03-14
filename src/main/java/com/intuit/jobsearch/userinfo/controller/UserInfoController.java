@@ -30,7 +30,7 @@ public class UserInfoController {
     }
 
     @RequestMapping(value="createNewUser", method= RequestMethod.POST, produces = "application/json", consumes = "application/json")
-    public ResponseEntity<Object> addWaterReading(@Valid @RequestBody UserInfo userInfo)  throws Exception
+    public ResponseEntity<Object> createNewUser(@Valid @RequestBody UserInfo userInfo)  throws Exception
     {
         if(userInfo!=null)
         {

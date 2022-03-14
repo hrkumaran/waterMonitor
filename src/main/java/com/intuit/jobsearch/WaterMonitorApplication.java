@@ -1,4 +1,4 @@
-package com.intuit.jobsearch.waterMonitor;
+package com.intuit.jobsearch;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
