@@ -3,12 +3,14 @@ package com.intuit.jobsearch.waterMonitor.model;
 import com.intuit.jobsearch.common.model.UserInfo;
 import lombok.Data;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 @Data
-@Entity(name = "WATER_READING_DETAILS")
-public class WaterReadingDetails {
+@Entity
+@Table(name = "WATER_READING_DETAILS")
+public class WaterReadingDetails implements Serializable {
 
     @Id
     @Column(name = "RRNO")

@@ -7,12 +7,14 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 @Data
-@Entity(name = "USER_INFO")
-public class UserInfo {
+@Entity
+@Table(name = "USER_INFO")
+public class UserInfo implements Serializable {
 
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
@@ -21,9 +23,9 @@ public class UserInfo {
         private Long userId;
         @Column(name = "RRNO")
         private Long rrNo;
-      //  @OneToMany
-       // @JoinColumn(name = "rrNo", referencedColumnName = "rrNo")
-     //   private List<WaterReadingDetails> waterReadingDetails;
+      /*  @OneToMany
+        @JoinColumn(name = "rrNo")
+        private List<WaterReadingDetails> waterReadingDetails;*/
         @Column(name = "FIRSTNAME")
         private String firstName;
         @Column(name = "LASTNAME")

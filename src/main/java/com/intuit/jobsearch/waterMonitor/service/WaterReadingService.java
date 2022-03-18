@@ -37,7 +37,7 @@ public class WaterReadingService {
         WaterReadingDetails waterReadingDetailsResults = null;
         try {
             UserInfo userInfo = userInfoRepository.getById(waterReadingDetails.getUserId());
-            WaterReadingDetails  preivouswaterReadingDetails = waterReadingRepository.findWaterReadingDetailsByRRNO(waterReadingDetails.getRrNo());
+            WaterReadingDetails preivouswaterReadingDetails = waterReadingRepository.findWaterReadingDetailsByRRNO(waterReadingDetails.getRrNo());
             Long differenceReading = waterReadingDetails.getCurrentMeterReading() - preivouswaterReadingDetails.getPreviousMeterReading();
             float amount = calculateUsageAmount(differenceReading,userInfo.getUserType());
             waterReadingDetails.setWaterConsumptionLitre(differenceReading);
