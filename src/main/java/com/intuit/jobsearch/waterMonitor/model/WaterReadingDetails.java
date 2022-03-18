@@ -1,14 +1,10 @@
 package com.intuit.jobsearch.waterMonitor.model;
 
+import com.intuit.jobsearch.common.model.UserInfo;
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.usertype.UserType;
-import org.hibernate.validator.constraints.Range;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity(name = "WATER_READING_DETAILS")
@@ -17,7 +13,8 @@ public class WaterReadingDetails {
     @Id
     @Column(name = "RRNO")
     private Long rrNo;
-
+    @Column(name = "USERID")
+    private Long userId;
     @Column(name = "CURRENT_METER_READING")
     private Long currentMeterReading;
     @Column(name = "PREVIOUS_METER_READING")

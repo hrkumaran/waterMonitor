@@ -1,5 +1,6 @@
 package com.intuit.jobsearch.waterMonitor.controller;
 
+import com.intuit.jobsearch.common.model.UserInfo;
 import com.intuit.jobsearch.waterMonitor.service.WaterReadingService;
 import com.intuit.jobsearch.waterMonitor.model.WaterReadingDetails;
 import org.slf4j.Logger;
@@ -29,6 +30,12 @@ public class WaterReadingController {
     public ResponseEntity<List<WaterReadingDetails>> getAllUserWaterReading()
     {
         return new ResponseEntity<List<WaterReadingDetails>>(waterReadingService.getAllUserWaterReading(), HttpStatus.OK);
+    }
+
+    @RequestMapping(value="getUserWaterReadingbyId", method= RequestMethod.POST)
+    public ResponseEntity<WaterReadingDetails> getUserWaterReadingbyId(@Valid @PathVariable Long userId)
+    {
+        return new ResponseEntity<WaterReadingDetails>(waterReadingService.getUserWaterReadingbyId(userId), HttpStatus.OK);
     }
 
     @RequestMapping(value="addWaterReadingCheck", method= RequestMethod.POST, produces = "application/json", consumes = "application/json")

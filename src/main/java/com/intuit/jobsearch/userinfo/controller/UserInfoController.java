@@ -23,6 +23,12 @@ public class UserInfoController {
 
     Logger logger = LoggerFactory.getLogger(UserInfoController.class);
 
+    @RequestMapping(value="getUserInfobyId", method= RequestMethod.POST)
+    public ResponseEntity<UserInfo> getUserInfobyId(@Valid @PathVariable Long userId)
+    {
+        return new ResponseEntity<UserInfo>(userInfoService.getUserInfobyId(userId), HttpStatus.OK);
+    }
+
     @RequestMapping(value="getAllUserInfo", method= RequestMethod.GET)
     public ResponseEntity<List<UserInfo>> getAllUserInfo()
     {

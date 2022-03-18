@@ -3,12 +3,15 @@ package com.intuit.jobsearch.common.util;
 public enum UserType {
     IND("Individual"),
     COM("Commerical"),
-    GOV("Official");
+    OFF("Official");
 
-    public final String label;
+    public final String value;
 
-    private UserType(String label) {
-        this.label = label;
+    private UserType(String value) {
+        this.value = value;
     }
 
+    public String getValue() {
+        return value;
+    }
 }
