@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-
 public class WaterReadingService {
 
     Logger logger = LoggerFactory.getLogger(WaterReadingController.class);
@@ -38,11 +37,16 @@ public class WaterReadingService {
         try {
             UserInfo userInfo = userInfoRepository.getById(waterReadingDetails.getUserId());
             WaterReadingDetails preivouswaterReadingDetails = waterReadingRepository.findWaterReadingDetailsByRRNO(waterReadingDetails.getRrNo());
-            Long differenceReading = waterReadingDetails.getCurrentMeterReading() - preivouswaterReadingDetails.getPreviousMeterReading();
+            long differenceReading = waterReadingDetails.getCurrentMeterReading() - preivouswaterReadingDetails.getPreviousMeterReading();
             float amount = calculateUsageAmount(differenceReading,userInfo.getUserType());
             waterReadingDetails.setWaterConsumptionLitre(differenceReading);
             waterReadingDetails.setAmount(amount);
-            waterReadingDetails.setPreviousMeterReading(preivouswaterReadingDetails.getPreviousMeterReading());
+            if(preivouswaterReadingDetails.getPreviousMeterReading()==0 || differenceReading==0) {
+                waterReadingDetails.setPreviousMeterReading(waterReadingDetails.getCurrentMeterReading());
+            }
+            else {
+                waterReadingDetails.setPreviousMeterReading(preivouswaterReadingDetails.getPreviousMeterReading());
+            }
             waterReadingDetailsResults = waterReadingRepository.save(waterReadingDetails);
           logger.info("WaterReadingDetailsResults=" + waterReadingDetailsResults);
       }
@@ -62,8 +66,6 @@ public class WaterReadingService {
     public WaterReadingDetails getUserWaterReadingbyId(Long userId) {
         WaterReadingDetails waterReadingDetailsResults = null;
         try {
-
-
             waterReadingDetailsResults = waterReadingRepository.getById(userId);
             logger.info("WaterReadingDetailsResults=" + waterReadingDetailsResults);
         }
