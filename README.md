@@ -12,3 +12,5 @@
 # when Meter reading difference between old and new is 0 then put default prices as s 230 Rs. 
 # when Meter reading difference between old and new is less than 100 then put default prices as s 230 Rs. 
 # when Meter reading more than 100 then put default prices as s 230 Rs + excess reading litre Amount.
+# when Meter Reading difference is Negative Number due to Human Error/Faulty Meter then change into Default Price.
+#
