@@ -30,9 +30,8 @@ public class IndividualWaterAmount implements UserTypeWaterAmount{
     //@Value("${individual.meter.reading.firstprice:3}")
     private String defaultWaterPerLitrePrice="3";
 
-  @Autowired
-  private CommonProperties commonProperties;
-
+    //@Autowired
+            //private CommonProperties commonProperties;
     @Override
     public float calculateAmount(long differenceReading) {
         float defaultWaterAmountValue = Float.parseFloat(defaultWaterAmount);

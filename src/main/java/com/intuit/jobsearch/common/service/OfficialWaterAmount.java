@@ -32,13 +32,13 @@ public class OfficialWaterAmount implements UserTypeWaterAmount{
             //private CommonProperties commonProperties;
     @Override
     public float calculateAmount(long differenceReading) {
-        Float defaultWaterAmountValue = Float.parseFloat(defaultWaterAmount);
-        long defaultMergeRangeValue= Long.getLong(defaultMergeRange);
-        if(differenceReading!=0 && differenceReading>(differenceReading - defaultMergeRangeValue))
+        float defaultWaterAmountValue = Float.parseFloat(defaultWaterAmount);
+        long defaultMergeRangeValue= Long.parseLong(defaultMergeRange);
+        if(differenceReading!=0 && differenceReading>0 && differenceReading>(differenceReading - defaultMergeRangeValue))
         {
             return Float.parseFloat(String.valueOf(((differenceReading - defaultMergeRangeValue) * Long.valueOf(defaultWaterPerLitrePrice))))+defaultWaterAmountValue;
         }
-        else if(differenceReading==0 || (differenceReading!=0 && differenceReading<=defaultMergeRangeValue))
+        else if(differenceReading==0 || differenceReading>0 || (differenceReading!=0 && differenceReading<=defaultMergeRangeValue))
         {
             return Float.parseFloat(defaultWaterAmount);
         }
