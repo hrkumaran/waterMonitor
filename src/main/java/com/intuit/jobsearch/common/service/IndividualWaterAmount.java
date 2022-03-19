@@ -37,11 +37,11 @@ public class IndividualWaterAmount implements UserTypeWaterAmount{
     public float calculateAmount(long differenceReading) {
         float defaultWaterAmountValue = Float.parseFloat(defaultWaterAmount);
         long defaultMergeRangeValue= Long.parseLong(defaultMergeRange);
-        if(differenceReading!=0 && differenceReading>(differenceReading - defaultMergeRangeValue))
+        if(differenceReading!=0 && differenceReading>0 && differenceReading>(differenceReading - defaultMergeRangeValue))
         {
             return Float.parseFloat(String.valueOf(((differenceReading - defaultMergeRangeValue) * Long.valueOf(defaultWaterPerLitrePrice))))+defaultWaterAmountValue;
         }
-        else if(differenceReading==0 || (differenceReading!=0 && differenceReading<=defaultMergeRangeValue))
+        else if(differenceReading==0 || differenceReading>0 || (differenceReading!=0 && differenceReading<=defaultMergeRangeValue))
         {
             return Float.parseFloat(defaultWaterAmount);
         }
