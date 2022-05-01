@@ -1,0 +1,21 @@
+apiVersion: skaffold/v2beta18
+kind: Config
+build:
+  artifacts:
+    - image: watermonitor
+      docker:
+        cacheFrom:
+          # Local Docker builder replaces cache references to the artifact image with
+          # the tagged image reference, useful for caching from the previous build.
+          - watermonitor
+  local: {}
+  #artifacts:
+   # - image: waterMonitor
+    #  jib: {}
+
+deploy:
+  kubectl:
+    manifests:
+      - kube/local/deployment.yaml
+      - kube/local/service.yaml
+      - kube/local/request-quota.yaml

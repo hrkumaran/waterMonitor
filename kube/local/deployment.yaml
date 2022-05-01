@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: watermonitor-demo-app
+  labels:
+    app: watermonitor-demo-app
+specs:
+  replicas: 3
+  selector:
+    matchlabels:
+      app: watermonitor-demo-app
+    templates:
+      metadata:
+        labels:
+          app: watermonitor-demo-app
+      spec:
+        containers:
+          - name: watermonitor-demo-app
+            image: watermonitor
+            ports:
+              - containerPort: 8888

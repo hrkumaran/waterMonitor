@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: Service
+metadata:
+  name: skaffold-demo-svc
+specs:
+  type: LoadBalancer
+  ports:
+    - port: 8080
+      targetport: 8888
+      protocol: TCP
+  selector:
+    app: watermonitor-demo-app
